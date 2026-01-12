@@ -1,17 +1,18 @@
 <template>
   <div class="page">
-    <!-- TOP BLOCKS -->
     <div class="top">
       <div class="block">
         <h3>Выбранные вещи пользователя</h3>
         <div class="items">
           <div
+              v-if="selectedUserItems.length"
               v-for="item in selectedUserItems"
               :key="item.id"
               class="item selected"
               v-text="item.name"
               @click="toggleUserItem(item)"
           />
+          <div v-else class="empty">Ничего не выбрано</div>
         </div>
       </div>
 
@@ -27,7 +28,6 @@
       </div>
     </div>
 
-    <!-- BOTTOM BLOCKS -->
     <div class="bottom">
       <div class="block">
         <h3>Вещи пользователя</h3>
@@ -125,6 +125,7 @@ const selectShopItem = (item) => {
   border: 1px solid #999;
   cursor: pointer;
   border-radius: 8px;
+  font-weight: 800;
   &.selected {
     background-color: #074687;
     border-color: #3399ff;
